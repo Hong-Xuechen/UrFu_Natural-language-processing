@@ -12,20 +12,21 @@ from typing import Optional
 from fastapi import FastAPI
 from pydantic import BaseModel
 from transformers import pipeline
-app = FastAPI()
 
 class Item(BaseModel):
     text:str
-
+        
+app = FastAPI()
 translator_en_to_zh = pipeline("translation_en_to_zh", "Helsinki-NLP/opus-mt-en-zh")
+
 @app.get("/")
-def read_root():
+def root():
     return {"Hello": "World"}
 
 @app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
+def item(item_id: int, q: Optional[str] = None):
     return {"item_id": item_id, "q": q}
 
-@app.put("/translator")
-def translator_item(item: Item):
+@app.put("/translator/")
+def translator(item: Item):
     return {"translator": translator_en_to_zh(item.text)}
