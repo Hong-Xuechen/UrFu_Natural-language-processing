@@ -14,10 +14,6 @@ translator_en_to_zh = pipeline("sentiment-analysis")
 def root():
     return {"Hello": "World"}
 
-@app.get("/items/{item_id}")
-def item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
-
 @app.put("/translator/")
 def translator(item: Item):
     return {"translator": translator_en_to_zh(item.text)}
