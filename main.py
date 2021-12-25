@@ -8,7 +8,7 @@ class Item(BaseModel):
     text:str
         
 app = FastAPI()
-translator_en_to_zh = pipeline( "text-classification","nlptown/bert-base-multilingual-uncased-sentiment")
+translator_en_to_zh = pipeline( "text-classification","bhadresh-savani/distilbert-base-uncased-emotion")
 
 @app.get("/")
 def root():
