@@ -15,4 +15,4 @@ def root():
 
 @app.post("/question_answering")
 def question_answering(item: Item):
-    return {"context": item.context,"question_answering": nlp(question=item.question, context=context)}
+    return {"context": item.context,"question_answering": nlp(question=item.question, context=item.context)}
