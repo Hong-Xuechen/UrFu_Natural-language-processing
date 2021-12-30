@@ -3,8 +3,8 @@ from pydantic import BaseModel
 from transformers import pipeline
 
 class Item(BaseModel):
-    question:str
     context:str
+    question:str
         
 app = FastAPI()
 nlp = pipeline("question-answering","distilbert-base-cased-distilled-squad")
